@@ -1,28 +1,37 @@
 <script>
+  import { Subject } from "$lib/subjectProvider";
   import SubjectSection from "../components/SubjectSection.svelte";
 </script>
 
-<h1>Assignment Viewer 2.0</h1>
+<!--<h1>Assignment Viewer 2.0</h1>-->
 
 <div id="container">
-  <SubjectSection title="Analysis I">
-    <h1>Servus</h1>
-  </SubjectSection>
-  <SubjectSection title="Algorithmen und Wahrscheinlichkeit">
-    <h1>Servus</h1>
-  </SubjectSection>
-  <SubjectSection title="Digital Design and Computer Architecture">
-    <h1>Servus</h1>
-  </SubjectSection>
-  <SubjectSection title="Parallele Programmierung">
-    <h1>Servus</h1>
-  </SubjectSection>
+  <SubjectSection title="AlgoWahr" subject={Subject.ALGOWAHR}></SubjectSection>
+  <SubjectSection title="Analysis I" subject={Subject.ANALYSIS}
+  ></SubjectSection>
+  <SubjectSection title="DDCA" subject={Subject.DDCA}></SubjectSection>
+  <SubjectSection title="PProg" subject={Subject.PPROG}></SubjectSection>
 </div>
 
+<div style="height: 500px;"></div>
+
 <style>
-    #container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
+  @import "../app.css";
+
+  #container {
+    overflow-x: scroll;
+    width: max-content;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .topl {
+    position: fixed;
+    top: 0;
+    left: 50px;
+    color: white;
+    font-weight: bold;
+  }
 </style>

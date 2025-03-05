@@ -1,1 +1,55 @@
-@import 'tailwindcss'
+@tailwind base;
+
+:root {
+  background: #151916;
+  color: white;
+  letter-spacing: -0.05em;
+  font-family: sans-serif;
+}
+
+:global(h1) {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+:global(a) {
+  color: #88d56f;
+}
+
+:global(.primary) {
+  background: #88d56f;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: #243c40;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+:global(.secondary) {
+  background: #c7ced2;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  color: #243c40;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+:global(.primary:hover) {
+  transform: scale(1.1);
+}

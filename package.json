@@ -23,7 +23,10 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
+		"@sveltestack/svelte-query": "^1.6.0",
+		"@types/jsdom": "^21.1.7",
 		"@vercel/edge-config": "^1.4.0",
+		"axios": "^1.8.1",
 		"jsdom": "^26.0.0",
 		"phosphor-svelte": "^3.0.1"
 	}
