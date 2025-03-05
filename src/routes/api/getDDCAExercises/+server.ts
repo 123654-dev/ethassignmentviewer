@@ -3,6 +3,7 @@ const { JSDOM } = jsdom;
 import axios from "axios";
 import { env } from "$env/dynamic/public";
 import { ANALYSIS_WEBSITE, DDCA_LAB_WEBSITE } from "$env/static/private";
+import type { exercise } from "$lib/exercise";
 
 export async function GET(): Promise<Response> {
   //axios fetch raw html
@@ -22,16 +23,15 @@ export async function GET(): Promise<Response> {
 
   let actual = table?.querySelector("tbody");
   let rows = actual?.querySelectorAll("tr");
-  let exercises: {
-    title: string | null | undefined;
-    link: string | undefined;
-  }[] = [];
+  let exercises: exercise[] = [];
   rows?.forEach((row) => {
+    let due = row.getElementsByClassName("col6")[0]?.textContent ?? "???";
     let exercise = {
-      title: row.querySelector("a")?.textContent,
-      link: "https://safari.ethz.ch" + row.querySelector("a")?.href,
-      dueDate: "",
+      name: row.querySelector("a")?.textContent ?? "???",
+      links: ["https://safari.ethz.ch" + row.querySelector("a")?.href],
+      dueDate: due,
     };
+    console.log(exercise);
     let td = row.querySelectorAll("td");
     exercises.push(exercise);
   });
