@@ -49,7 +49,13 @@
     >
 
     <div style="height: 10px;"></div>
-
+    {#if $query.isLoading}
+      <div>Loading...</div>
+    {/if}
+    {#if $query.isError}
+      <div>Error: {$query.error.message}</div>
+      
+    {/if}
     {#each $query.data as exercise, i}
       <span style="display: flex; width: 100%; justify-content: space-between;"
         ><a class="primary" target="_blank" href={exercise.links[0]}
