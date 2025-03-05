@@ -12,7 +12,7 @@
     QueryClientProvider,
     useQuery,
   } from "@sveltestack/svelte-query";
-  import { FileDashed } from "phosphor-svelte";
+  import { Clock, FileDashed } from "phosphor-svelte";
   import ArrowUpRight from "phosphor-svelte/lib/ArrowUpRight";
   import DragNDrop from "./DragNDrop.svelte";
 
@@ -62,7 +62,7 @@
             >
           {/if}
         {/each}
-        Due {exercise.dueDate}
+        <span style="display: flex; flex-direction: row; justify-content: end;"><Clock color="#515151" style="margin: 8px;"></Clock>Due {exercise.dueDate}</span>
         <!--<DragNDrop fileUrl={exercise.link}></DragNDrop>-->
       </span>
     {/each}
@@ -84,7 +84,7 @@
   }
 
   #subject-wrapper {
-    width: 400px;
+    width: 350px;
     padding: 5px;
   }
 </style>
