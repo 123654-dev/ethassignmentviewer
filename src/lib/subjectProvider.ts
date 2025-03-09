@@ -1,5 +1,3 @@
-
-
 export enum Subject {
   ANALYSIS = "analysis",
   DDCA = "ddca",
@@ -14,9 +12,22 @@ export function getCourseWebsite(subject: Subject): string {
     case Subject.DDCA:
       return "https://safari.ethz.ch/ddca/spring2025/doku.php?id=start";
     case Subject.PPROG:
-      return "https://example.com";
+      return "https://spcl.inf.ethz.ch/Teaching/2025-pp/";
     case Subject.ALGOWAHR:
-      return "https://example.com";
+      return "";
+  }
+}
+
+export function getMoodle(subject: Subject): string {
+  switch (subject) {
+    case Subject.ANALYSIS:
+      return "";
+    case Subject.DDCA:
+      return "https://moodle-app2.let.ethz.ch/course/view.php?id=25002";
+    case Subject.PPROG:
+      return "https://moodle-app2.let.ethz.ch/course/view.php?id=24843";
+    case Subject.ALGOWAHR:
+      return "https://moodle-app2.let.ethz.ch/course/view.php?id=24833";
   }
 }
 
@@ -25,11 +36,11 @@ export function getVideoWebsite(subject: Subject): string {
     case Subject.ANALYSIS:
       return "https://video.ethz.ch/lectures/d-math/2025/spring/401-0212-16L.html";
     case Subject.DDCA:
-      return "https://example.com";
+      return "https://www.youtube.com/watch?v=ubhxKNlOlRg&list=PL5Q2soXY2Zi9Eo29LMgKVcaydS7V1zZW3";
     case Subject.PPROG:
       return "https://example.com";
     case Subject.ALGOWAHR:
-      return "https://example.com";
+      return "";
   }
 }
 

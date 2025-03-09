@@ -5,6 +5,7 @@
     getCourseWebsite,
     getExercises,
     getVideoWebsite,
+    getMoodle,
     Subject,
   } from "$lib/subjectProvider";
   import {
@@ -20,6 +21,7 @@
 
   const website = getCourseWebsite(subject) ?? "";
   const videoWebsite = getVideoWebsite(subject) ?? "";
+  const moodle = getMoodle(subject) ?? "";
 
   const queryClient = new QueryClient();
 
@@ -40,13 +42,23 @@
 <div id="subject-wrapper">
   <div id="subject-style-wrapper">
     <h1>{title}</h1>
-    <a target="_blank" href={website}
-      ><span><ArrowUpRight></ArrowUpRight> Course Website</span></a
-    >
+    {#if website != ""}
+      <a target="_blank" href={website}
+        ><span><ArrowUpRight></ArrowUpRight> Course Website</span></a
+      >
+    {/if}
 
-    <a target="_blank" href={videoWebsite}>
-      <span><ArrowUpRight></ArrowUpRight> Video Recordings</span></a
-    >
+    {#if moodle != ""}
+      <a target="_blank" href={moodle}>
+        <span><ArrowUpRight></ArrowUpRight> Moodle</span></a
+      >
+    {/if}
+    
+    {#if videoWebsite != ""}
+      <a target="_blank" href={videoWebsite}>
+        <span><ArrowUpRight></ArrowUpRight> Video Recordings</span></a
+      >
+    {/if}
 
     <div style="height: 10px;"></div>
     {#if $query.isLoading}
@@ -54,7 +66,6 @@
     {/if}
     {#if $query.isError}
       <div>Error: {$query.error.message}</div>
-      
     {/if}
     {#each $query.data as exercise, i}
       <span style="display: flex; width: 100%; justify-content: space-between;"
@@ -68,7 +79,9 @@
             >
           {/if}
         {/each}
-        <span style="display: flex; flex-direction: row; justify-content: end;"><Clock color="#515151" style="margin: 8px;"></Clock>Due {exercise.dueDate}</span>
+        <span style="display: flex; flex-direction: row; justify-content: end;"
+          ><Clock color="#515151" style="margin: 8px;"></Clock>Due {exercise.dueDate}</span
+        >
         <!--<DragNDrop fileUrl={exercise.link}></DragNDrop>-->
       </span>
     {/each}
