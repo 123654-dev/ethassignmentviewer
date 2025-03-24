@@ -28,7 +28,7 @@ export async function GET(): Promise<Response> {
     let due = row.getElementsByClassName("col6")[0]?.textContent ?? "???";
     let exercise = {
       name: row.querySelector("a")?.textContent ?? "???",
-      links: ["https://safari.ethz.ch" + row.querySelector("a")?.href],
+      links: ["https://safari.ethz.ch" + row.querySelector("a")?.href, "https://safari.ethz.ch" + row.querySelectorAll("a")[1]?.href, "https://safari.ethz.ch" + row.querySelectorAll("a")[3]?.href],
       dueDate: due,
     };
     console.log(exercise);

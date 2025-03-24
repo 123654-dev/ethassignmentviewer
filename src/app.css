@@ -5,6 +5,7 @@
   color: white;
   letter-spacing: -0.05em;
   font-family: sans-serif;
+  font-size: 21px;
 }
 
 :global(h1) {
@@ -34,22 +35,28 @@
 }
 
 :global(.secondary) {
-  background: #c7ced2;
+  /*background: #c7ced2;*/
   padding: 10px;
   border-radius: 8px;
   border: none;
-  color: #243c40;
+  color: #c7ced2;
   vertical-align: middle;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 10px 0px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   transition: all ease-in-out 0.1s;
   cursor: pointer;
+  border: 1px solid #3e4346;
 }
 
-:global(.primary:hover) {
+:global(.primary:hover, .secondary:hover) {
   transform: scale(1.1);
+}
+
+:global(.secondary:hover) {
+  background: #3e4346;
+  color: #fff;
 }

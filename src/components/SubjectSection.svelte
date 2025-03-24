@@ -13,7 +13,7 @@
     QueryClientProvider,
     useQuery,
   } from "@sveltestack/svelte-query";
-  import { Clock, FileDashed } from "phosphor-svelte";
+  import { Clipboard, ClipboardText, Clock, FileDashed, Presentation } from "phosphor-svelte";
   import ArrowUpRight from "phosphor-svelte/lib/ArrowUpRight";
   import DragNDrop from "./DragNDrop.svelte";
 
@@ -53,7 +53,7 @@
         <span><ArrowUpRight></ArrowUpRight> Moodle</span></a
       >
     {/if}
-    
+
     {#if videoWebsite != ""}
       <a target="_blank" href={videoWebsite}>
         <span><ArrowUpRight></ArrowUpRight> Video Recordings</span></a
@@ -74,11 +74,23 @@
         >
         {#each exercise.files as file, i}
           {#if i != 0}
-            <a class="secondary" target="_blank" href={exercise.links[0]}
-              ><ArrowUpRight></ArrowUpRight>{exercise.name}</a
-            >
+            <span>
+              <a class="secondary" target="_blank" href={exercise.links[0]}
+                ><ArrowUpRight></ArrowUpRight>{exercise.name}</a
+              >
+            </span>
           {/if}
         {/each}
+        {#if exercise.links.length > 1}
+        <a class="secondary" target="_blank" href={exercise.links[1]}
+          ><ClipboardText></ClipboardText></a
+        >
+        {/if}
+        {#if exercise.links.length > 2}
+        <a class="secondary" target="_blank" href={exercise.links[2]}
+          ><Presentation></Presentation></a
+        >
+        {/if}
         <span style="display: flex; flex-direction: row; justify-content: end;"
           ><Clock color="#515151" style="margin: 8px;"></Clock>Due {exercise.dueDate}</span
         >
@@ -103,7 +115,7 @@
   }
 
   #subject-wrapper {
-    width: 350px;
+    width: 450px;
     padding: 5px;
   }
 </style>
